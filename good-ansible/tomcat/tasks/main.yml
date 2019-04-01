@@ -1,0 +1,36 @@
+---
+
+# Install tomcat
+- name: install tomcat
+    yum:
+      name: tomcat
+      state: latest
+      notify: Restart and enable tomcat
+
+- name: create ansible tomcat directory
+    file:
+      path: /usr/share/tomcat/webapps/ROOT
+      state: directory
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  tag: Index_html
+    template:
+      src: index.html.j2
+      dest: /usr/share/tomcat/webapps/ROOT/index.html
+      mode: 0644
+      when: inventory_hostname == "apps"
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: /usr/share/tomcat/webapps/ROOT/index.html
+    mode: 0644
+    when: inventory_hostname == "apps1"      
+    
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.app2
+    dest: /usr/share/tomcat/webapps/ansible/index.html
+    when: inventory_hostname == "apps2"
+      
+

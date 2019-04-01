@@ -1,0 +1,12 @@
+---
+# tasks file for good-playbook
+
+- name: Creating a Repos
+  file:
+    src: open_three-tier-app.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    state: file
+    mode: 0644
+  tag: Repo
+
+

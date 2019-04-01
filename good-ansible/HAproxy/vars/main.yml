@@ -1,0 +1,6 @@
+---
+# vars file for haproxy / deploy
+
+ha_proxy: 
+  - httpie 
+  - haproxy 
